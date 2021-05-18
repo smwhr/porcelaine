@@ -2,6 +2,8 @@
 
 Un hybride ink (pour le code) / twine (pour le type d'interaction) / parser (pour le world building)
 
+Try it at [Antichambre on itch.io](https://smwhr.itch.io/antichambre-draft)
+
 ## syntaxes particulières
 
 ### Didascalies

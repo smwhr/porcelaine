@@ -52,6 +52,7 @@
 
         // Generate story text - loop through available content
         var collectedParagraphs = [];
+        var collectedActionscalies = [];
         var collectedDidascalies = [];
 
         while(story.canContinue) {
@@ -62,6 +63,8 @@
 
             if(tags.includes("didascalie")){
                 collectedDidascalies.push(paragraphText)
+            }else if(tags.includes("actionscalie")){
+                collectedActionscalies.push(paragraphText)
             }else{
                 collectedParagraphs.push(paragraphText)
             }
@@ -97,6 +100,19 @@
                             }));
 
         storyContainer.innerHTML = "";
+
+        collectedActionscalies
+            .map( text => {
+                const paragraphElement = document.createElement('p')
+                      paragraphElement.className = 'storyp';
+                      paragraphElement.innerHTML = `<em>${text}</em>`;
+                      
+                return paragraphElement;
+            })
+            .forEach(p => {
+                storyContainer.appendChild(p)
+            });
+
         collectedParagraphs
             .map(text => {
                 let reenv = /<:([a-z_]*)>([^<]*)<\/>/g
@@ -117,9 +133,9 @@
 
             })
             .map( text => {
-                var paragraphElement = document.createElement('p')
-                    paragraphElement.className = 'storyp';
-                    paragraphElement.innerHTML = text;
+                const paragraphElement = document.createElement('p')
+                      paragraphElement.className = 'storyp';
+                      paragraphElement.innerHTML = text;
 
                 return paragraphElement;
             })
@@ -129,9 +145,9 @@
 
         collectedDidascalies
             .map( text => {
-                var paragraphElement = document.createElement('p')
-                    paragraphElement.className = 'storyp';
-                    paragraphElement.innerHTML = `<em>${text}</em>`;
+                const paragraphElement = document.createElement('p')
+                      paragraphElement.className = 'storyp';
+                      paragraphElement.innerHTML = `<em>${text}</em>`;
 
                 return paragraphElement;
             })
